@@ -51,12 +51,12 @@ export function NoteList ({availableTags,notes,onAddTag}:NoteListProps) {
     <Link to="/new">
     <Button variant="primary">Create</Button>
     </Link>
-    <Button
+    {/* <Button
              
               variant="outline-secondary"
             >
               Edit Tags
-            </Button>
+            </Button> */}
 </Stack>
 </Col>
       </Row>

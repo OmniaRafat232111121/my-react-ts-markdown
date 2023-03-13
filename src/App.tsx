@@ -9,6 +9,7 @@ import useLocalStorage from './useLocalStorage';
 import {NoteList }from './Components/NoteList';
 import { NoteLayout } from './Components/NoteLayOut';
 import { ShowNote } from './Components/ShowNote';
+import EditNote from './Components/EditNote';
 export type Note = {
   id: string
 } & NoteData
@@ -60,6 +61,17 @@ function App() {
       return prevNotes.filter(note => note.id !== id)
     })
   }
+  function onUpdateNote(id: string, { tags, ...data }: NoteData) {
+    setNotes(prevNotes => {
+      return prevNotes.map(note => {
+        if (note.id === id) {
+          return { ...note, ...data, tagIds: tags.map(tag => tag.id) }
+        } else {
+          return note
+        }
+      })
+    })
+  }
 
   return (
    <Container className='ml-4'>
@@ -82,7 +94,12 @@ function App() {
           <Route
             path="edit"
             element={
-              <h1>EDit</h1>
+              <EditNote
+              onSubmit={onUpdateNote}
+
+    onAddTag={addTag}
+    availableTags={tags}
+               />
             }
           />
         </Route>
