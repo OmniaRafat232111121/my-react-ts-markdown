@@ -119,7 +119,7 @@ export function NoteList ({availableTags,notes,onAddTag}:NoteListProps) {
   )
 }
 
-function NoteCard({ id, title, tags }: SimplifiedNote) {
+function NoteCard({ id, title, tags }: SimplifiedNoteProps ) {
     return (
       <Card
         as={Link}
